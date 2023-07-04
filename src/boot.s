@@ -27,23 +27,6 @@ _start:
    # enable I$ and D$
    #csrwi 0x7ca,0x3
    csrsi 0x7d0, 0x10 # enable ACE in mmisc_ctl (custom CSR)
-//#ifdef CACHE_ECCEN    
-#if 0
-   csrr t1, 0x7ca
-   or  t1, t1, 0x2b
-   csrw 0x7ca, t1 # enable I and D Cache with ECC
-#endif
-
-//#ifdef ILM_DLM_ECCEN
-#if 0 
-   csrr t1, 0x7c0
-   or t1, t1, 0x4
-   csrw 0x7c0, t1 # enable ILM ecc
-   csrr t1, 0x7c1
-   or t1, t1, 0x4
-   csrw 0x7c1, t1 # enable DLM ecc
-#endif
-
    call _main
 
 exit:
